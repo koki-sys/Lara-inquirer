@@ -7,7 +7,7 @@ use Illuminate\Http\Request;
 
 class BookController extends Controller
 {
-    public function index()
+    public function index(Request $request)
     {
         $books = Book::all();
         return view('book.index', ['books' => $books]);
