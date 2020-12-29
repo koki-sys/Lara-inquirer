@@ -13,8 +13,16 @@ class CreateBookTable extends Migration
      */
     public function up()
     {
-        Schema::create('book', function (Blueprint $table) {
+        Schema::create('books', function (Blueprint $table) {
             $table->id();
+            $table->char('name', 30);
+            $table->string('author');
+            $table->string('publisher');
+            $table->char('isbn', 25);
+            $table->string('img');
+            $table->smallInteger('library_id');
+            $table->smallInteger('area_id');
+            $table->smallInteger('category_id');
             $table->timestamps();
         });
     }

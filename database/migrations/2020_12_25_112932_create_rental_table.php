@@ -15,6 +15,11 @@ class CreateRentalTable extends Migration
     {
         Schema::create('rental', function (Blueprint $table) {
             $table->id();
+            $table->foreignId('user_id');
+            $table->date('rental_date');
+            $table->date('receipt_date');
+            $table->smallInteger('receipt_library_id');
+            $table->bigInteger('book_id');
             $table->timestamps();
         });
     }
