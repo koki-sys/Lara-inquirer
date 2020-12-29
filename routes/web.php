@@ -2,6 +2,7 @@
 
 use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\BookController;
+use Illuminate\Support\Facades\Auth;
 
 /*
 |--------------------------------------------------------------------------
@@ -14,7 +15,7 @@ use App\Http\Controllers\BookController;
 |
 */
 
-Route::get('home', [BookController::class, 'index']);
+Route::get('/', [BookController::class, 'index'])->name('book.index');
 
 Auth::routes();
 
