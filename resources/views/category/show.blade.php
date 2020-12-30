@@ -1,7 +1,7 @@
 @extends('layouts.layout')
 
 @section('content')
-<h4>地域：{{ $category->name }}</h4>
+<h4>ジャンル：{{ $category->name }}</h4>
 <div class="row">
     @foreach($areabook as $book)
     <div class="col-md-6 col-lg-4 mt-5">
