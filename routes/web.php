@@ -3,6 +3,7 @@
 use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\BookController;
 use App\Http\Controllers\CategoryController;
+use App\Http\Controllers\AreaController;
 use Illuminate\Support\Facades\Auth;
 
 /*
@@ -17,7 +18,8 @@ use Illuminate\Support\Facades\Auth;
 */
 
 Route::get('/', [BookController::class, 'index'])->name('book.index');
-Route::get('/category', [CategoryController::class, 'index'])->name('category.index');
+Route::resource('category', CategoryController::class);
+Route::resource('area', AreaController::class);
 Auth::routes();
 
 Route::get('/home', [App\Http\Controllers\HomeController::class, 'index'])->name('home');

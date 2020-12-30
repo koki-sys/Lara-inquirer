@@ -9,14 +9,9 @@
                     </li>
                 </strong>
                 @foreach ($categories as $category)
-                    <form action="genre.php" method="post">
-                        @csrf
-                        <li class="list-group-item text-center" style="background-color: #fbfbfb;">
-                            <input type="hidden" name="genreid" value="{{ $category->id }}">
-                            <input type="hidden" name="genre" value="{{ $category->name }}">
-                            <input type="submit" class="justify-content-center text-dark btn btn-white" value="{{ $category->name }}">
-                        </li>
-                    </form>
+                    <li class="list-group-item text-center" style="background-color: #fbfbfb;">
+                        <a href="{{ url('category/'. $category->id) }}" class="justify-content-center text-dark btn btn-white">{{ $category->name }}</a>
+                    </li>
                 @endforeach
             </ul>
         </div>
@@ -27,14 +22,9 @@
                     <li class="text-center list-group-item" style="list-style: none; background-color: #fbfbfb;">地域</li>
                 </strong>
                 @foreach ($areas as $area)
-                    <form action="area.php" method="post">
-                        @csrf
-                        <li class="list-group-item text-center" style="background-color: #fbfbfb;">
-                            <input type="hidden" name="genreid" value="{{ $area->id }}">
-                            <input type="hidden" name="genre" value="{{ $area->name }}">
-                            <input type="submit" class="text-center text-dark btn btn-white" value="{{ $area->name }}">
-                        </li>
-                    </form>
+                    <li class="list-group-item text-center" style="background-color: #fbfbfb;">
+                        <a href="{{ url('area/'. $area->id) }}" class="text-center text-dark btn btn-white">{{ $area->name }}</a>
+                    </li>
                 @endforeach
             </ul>
         </div>
