@@ -13,9 +13,9 @@ class CreateLibraryTable extends Migration
      */
     public function up()
     {
-        Schema::create('library', function (Blueprint $table) {
+        Schema::create('libraries', function (Blueprint $table) {
             $table->smallIncrements('id');
-            $table->char('name', 20);
+            $table->string('name');
             $table->timestamps();
         });
     }
