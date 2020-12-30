@@ -34,7 +34,7 @@
                     <a class="nav-link" href="{{ route('book.index') }}">書籍一覧<span class="sr-only">(current)</span></a>
                 </li>
                 <li class="nav-item mr-1">
-                    <a class="nav-link" href="../category/index.php">カテゴリ</a>
+                    <a class="nav-link" href="{{ route('category.index') }}">カテゴリ</a>
                 </li>
                 <li>
                     <form action="../../app/search/index.php" method="post" class="form-inline my-2 my-lg-0">
@@ -58,7 +58,7 @@
     @endcomponent
 @endguest
 
-<div class="container">
+<div class="container mt-3">
     @yield('content')
 </div>
 
