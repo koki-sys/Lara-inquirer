@@ -13,8 +13,8 @@
                         @csrf
                         <li class="list-group-item text-center" style="background-color: #fbfbfb;">
                             <input type="hidden" name="genreid" value="{{ $category->id }}">
-                            <input type="hidden" name="genre" value="{{ $category->getName() }}">
-                            <input type="submit" class="justify-content-center text-dark btn btn-white" value="{{ $category->getName() }}">
+                            <input type="hidden" name="genre" value="{{ $category->name }}">
+                            <input type="submit" class="justify-content-center text-dark btn btn-white" value="{{ $category->name }}">
                         </li>
                     </form>
                 @endforeach
@@ -31,8 +31,8 @@
                         @csrf
                         <li class="list-group-item text-center" style="background-color: #fbfbfb;">
                             <input type="hidden" name="genreid" value="{{ $area->id }}">
-                            <input type="hidden" name="genre" value="{{ $area->getName() }}">
-                            <input type="submit" class="text-center text-dark btn btn-white" value="{{ $area->getName() }}">
+                            <input type="hidden" name="genre" value="{{ $area->name }}">
+                            <input type="submit" class="text-center text-dark btn btn-white" value="{{ $area->name }}">
                         </li>
                     </form>
                 @endforeach
