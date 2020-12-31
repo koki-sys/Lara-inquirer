@@ -37,7 +37,8 @@
                     <a class="nav-link" href="{{ route('category.index') }}">カテゴリ</a>
                 </li>
                 <li>
-                    <form action="../../app/search/index.php" method="post" class="form-inline my-2 my-lg-0">
+                    <form action="{{ route('book.search') }}" method="POST" class="form-inline my-2 my-lg-0">
+                        @csrf
                         <input type="search" class="form-control mr-sm-2" placeholder="書籍名、地域を入力" name="search" aria-label="Search" />
                         <input class="btn btn-outline-success my-2 my-sm-0" type="submit" value="探す">
                     </form>
