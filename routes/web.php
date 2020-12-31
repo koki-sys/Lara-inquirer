@@ -17,9 +17,9 @@ use Illuminate\Support\Facades\Auth;
 |
 */
 
+Auth::routes();
 Route::get('/', [BookController::class, 'index'])->name('book.index');
+Route::post('/search', [BookController::class, 'search'])->name('book.search');
 Route::resource('category', CategoryController::class);
 Route::resource('area', AreaController::class);
-Auth::routes();
-
 Route::get('/home', [App\Http\Controllers\HomeController::class, 'index'])->name('home');

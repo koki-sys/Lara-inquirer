@@ -5,9 +5,14 @@ namespace App\Models;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
 
-class Category extends Model
+class Library extends Model
 {
     use HasFactory;
+
+    public function rentals()
+    {
+        return $this->hasMany('App\Models\Rental');
+    }
 
     public function books()
     {
