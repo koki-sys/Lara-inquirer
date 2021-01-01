@@ -47,22 +47,20 @@
         </div>
     </nav>
 
-@auth
-    @component('components.logined')
+    @auth
+        @component('components.logined')
         
-    @endcomponent
-@endauth
+        @endcomponent
+    @endauth
 
-@guest
-    @component('components.menu')
+    @guest
+        @component('components.menu')
         
-    @endcomponent
-@endguest
+        @endcomponent
+    @endguest
 
-<div class="container mt-3">
-    @yield('content')
-</div>
-
-
+    <div class="container mt-3">
+        @yield('content')
+    </div>
 </body>
 </html>
