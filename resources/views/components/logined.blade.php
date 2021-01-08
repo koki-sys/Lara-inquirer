@@ -17,7 +17,7 @@
         </ul>
         <ul class="navbar-nav w-25">
             <li class="nav-item mr-2 w-50">
-                <a class="nav-link btn btn-info shadow-sm" href="../bookcart/index.php">
+                <a class="nav-link btn btn-info shadow-sm" href="{{ route('bookcart.index') }}">
                     <img src="{{ asset('storage/img/bookcart.svg') }}" alt="ブックカート">
                 </a>
             </li>
