@@ -18,6 +18,7 @@ class CreateRentalTable extends Migration
             $table->foreignId('user_id');
             $table->date('rental_date');
             $table->date('receipt_date');
+            $table->integer('rental_flg');
             $table->smallInteger('receipt_library_id');
             $table->bigInteger('book_id');
             $table->timestamps();
