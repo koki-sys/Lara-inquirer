@@ -52,7 +52,7 @@ class RentalController extends Controller
                     ->where('user_id', $user_id)
                     ->where('rental_flg', 1)
                     ->where('rental_number', $random)
-                    ->get();
+                    ->first();
 
                 //予約個数確認
                 $cnt = DB::table('rentals')
@@ -62,9 +62,8 @@ class RentalController extends Controller
                     ->count();
 
                 $library = '';
-                foreach ($query as $r) {
-                    $library = Library::find($r->receipt_library_id);
-                }
+                $library = Library::find($query->receipt_library_id);
+
                 return view('rental.create', compact('query', 'library', 'cnt'));
             } else {
                 return redirect('/')->with('message', 'ブックカートが空です。書籍を予約する際は、ブックカートに入れて予約してください。');
@@ -74,14 +73,34 @@ class RentalController extends Controller
         }
     }
 
-    /**
-     * Store a newly created resource in storage.
-     *
-     * @param  \Illuminate\Http\Request  $request
-     * @return \Illuminate\Http\Response
-     */
-    public function store()
+    // mylibraryの機能
+    public function mybook()
     {
+        if (Auth::check()) {
+            $user_id = Auth::user()->id;
+            $mybook = Rental::with('book')
+                ->where('user_id', 1)
+                ->where('rental_flg', 1)
+                ->get();
+
+            return view('rental.mybook', compact('mybook'));
+        } else {
+            return redirect('/login');
+        }
+    }
+
+    public function mydetail()
+    {
+        if (Auth::check()) {
+            $user_id = Auth::user()->id;
+            $detail = Rental::where('user_id', $user_id)
+                ->where('rental_flg', 1)
+                ->get();
+
+            return view('rental.mydetail', compact('detail'));
+        } else {
+            return redirect('/login');
+        }
     }
 
     /**
@@ -92,49 +111,15 @@ class RentalController extends Controller
      */
     public function show($id)
     {
-        //
-    }
+        if (Auth::check()) {
+            $book = Rental::with('book')
+                ->find($id);
 
-    /**
-     * Show the form for editing the specified resource.
-     *
-     * @param  int  $id
-     * @return \Illuminate\Http\Response
-     */
-    public function edit($id)
-    {
-        //
-    }
+            $library = Library::find($book->receipt_library_id);
 
-    /**
-     * Update the specified resource in storage.
-     *
-     * @param  \Illuminate\Http\Request  $request
-     * @param  int  $id
-     * @return \Illuminate\Http\Response
-     */
-    public function update(Request $request, $id)
-    {
-        //
-    }
-
-    /**
-     * Remove the specified resource from storage.
-     *
-     * @param  int  $id
-     * @return \Illuminate\Http\Response
-     */
-    public function destroy($id)
-    {
-        //
-    }
-
-    // mylibraryの機能
-    public function book()
-    {
-    }
-
-    public function detail()
-    {
+            return view('rental.show', compact('book', 'library'));
+        } else {
+            return redirect('/login');
+        }
     }
 }

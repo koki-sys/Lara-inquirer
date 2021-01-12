@@ -11,10 +11,11 @@
                 <h5 class="card-title">{{ $search->name }}</h5>
                 <div class="row">
                     <form action="{{ route('bookcart.store') }}" method="post">
+                        @csrf
                         <input type="hidden" name="cartid" value="{{ $search->id }}">
                         <input type="submit" class="btn btn-info mr-3 ml-3" value="ブックカートへ"></a>
                     </form>
-                    <a href="/book/{{ $book->id }}" class="text-primary btn-white btn">書籍詳細</a>
+                    <a href="/book/{{ $search->id }}" class="text-primary btn-white btn">書籍詳細</a>
                 </div>
             </div>
         </div>
