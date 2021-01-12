@@ -10,7 +10,7 @@
                 </form>
             </li>
             <li class="nav-item w-50">
-                <a class="nav-link btn shadow-sm" style="background-color: #E6E6E6;" href="../mylibrary/index.php">
+                <a class="nav-link btn shadow-sm" style="background-color: #E6E6E6;" href="{{ route('rental.index') }}">
                     <img src="{{ asset('storage/img/mylibrary.svg') }}" alt="Myライブラリ">
                 </a>
             </li>
@@ -22,7 +22,7 @@
                 </a>
             </li>
             <li class="nav-item w-50">
-                <a class="nav-link btn btn-primary shadow-sm" href="../reserve/add.php">予約確定</a>
+                <a class="nav-link btn btn-primary shadow-sm" href="{{ route('rental.create') }}">予約確定</a>
             </li>
         </ul>
     </div>

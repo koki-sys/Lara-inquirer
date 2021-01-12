@@ -31,7 +31,7 @@
                         <a href="{{ route('book.index') }}" class="btn btn-outline-success btn-block">書籍一覧へ</a>
                     </div>
                     <div class="col-lg-3">
-                        <a href="../reserve/add.php" class="btn btn-primary btn-block">予約確定</a>
+                        <a href="{{ route('rental.create') }}" class="btn btn-primary btn-block">予約確定</a>
                     </div>
                     <div class="col-lg-6"></div>
                 </div>

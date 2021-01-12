@@ -18,4 +18,9 @@ class Book extends Model
     {
         return $this->belongsTo('App\Models\Area');
     }
+
+    public function library()
+    {
+        return $this->belongsTo('App\Models\Library');
+    }
 }

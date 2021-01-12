@@ -16,12 +16,14 @@ class CreateRentalTable extends Migration
         Schema::create('rentals', function (Blueprint $table) {
             $table->id();
             $table->foreignId('user_id');
+            $table->bigInteger('rental_number');
             $table->date('rental_date');
             $table->date('receipt_date');
             $table->integer('rental_flg');
             $table->smallInteger('receipt_library_id');
             $table->bigInteger('book_id');
             $table->timestamps();
+            
         });
     }
 

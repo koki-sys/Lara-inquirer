@@ -19,17 +19,20 @@ class BookcartController extends Controller
         $nowurl = (empty($_SERVER['HTTPS']) ? 'http://' : 'https://') . $_SERVER['HTTP_HOST'] . $_SERVER['REQUEST_URI'];
         $indexurl = route('bookcart.index');
         $user_id = Auth::user()->id;
-        $user = Rental::where('user_id', $user_id)->get();
-        $cart = $user->where('rental_flg', '=', 0);
-        $cartcnt = $user->where('rental_flg', '=', 0)->count();
-        $rentalcnt = $user->where('rental_flg', '=', 1)->count();
+        $user = Rental::where('user_id', $user_id);
+        $cart = $user->where('rental_flg', 0)->get();
+        $cartcnt = $user->where('rental_flg', 0)->count();
+        $rentalcnt = $user->where('rental_flg', 1)->count();
 
+
+        $img_arry = [];
         foreach ($cart as $row) {
             $current_cart = Book::find($row->book_id);
             $img_arry[] = $current_cart->img;
         }
 
-        return view('bookcart.index',
+        return view(
+            'bookcart.index',
             [
                 'img_arry' => $img_arry,
                 'nowurl' => $nowurl,
@@ -74,6 +77,7 @@ class BookcartController extends Controller
             $cart->user_id = $user_id;
             $cart->rental_date = date("Y-m-d");
             $cart->receipt_date = date("Y-m-d", strtotime("+3 day"));
+            $cart->rental_number = 0;
             $cart->rental_flg = 0;
             $cart->receipt_library_id = $book->library_id;
             $cart->book_id = $book->id;
@@ -82,9 +86,10 @@ class BookcartController extends Controller
             $cart->save();
 
             // bookcartをすべて表示(ログインユーザの分)
-            $bookcarts = Rental::where('user_id', $user_id)->get();
-            $cartcnt = $bookcarts->where('rental_flg', '=', 0)->count();
-            $rentalcnt = $bookcarts->where('rental_flg', '=', 1)->count();
+            $bookcart = Rental::where('user_id', $user_id);
+            $bookcarts = $bookcart->where('rental_flg', 0)->get();
+            $cartcnt = $bookcart->where('rental_flg', '=', 0)->count();
+            $rentalcnt = $bookcart->where('rental_flg', '=', 1)->count();
 
             // 今ブックカートに入っているものを取得する(foreach)
             $img_arry = [];
