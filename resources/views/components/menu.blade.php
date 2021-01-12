@@ -10,7 +10,7 @@
                 <a class="nav-link btn btn-warning text-white shadow-sm" href="{{ route('login') }}">ログイン</a>
             </li>
             <li class="nav-item col-lg-4 col-md-5 p-1">
-                <a class="nav-link btn btn-primary shadow-sm" href="../reserve/add.php">予約確定</a>
+                <a class="nav-link btn btn-primary shadow-sm" href="{{ route('rental.store') }}">予約確定</a>
             </li>
         </ul>
     </div>

@@ -1,6 +1,11 @@
 @extends('layouts.layout')
 
 @section('content')
+@if(session('message'))
+<div class="alert alert-warning" role="alert">
+    {{ session('message')}}
+</div>
+@endif
 <h4>書籍一覧</h4>
 <div class="row">
     @foreach($books as $book)
