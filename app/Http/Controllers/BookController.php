@@ -3,6 +3,8 @@
 namespace App\Http\Controllers;
 
 use App\Models\Book;
+use App\Models\Library;
+use App\Models\Category;
 use Illuminate\Database\Eloquent\Builder;
 use Illuminate\Http\Request;
 
@@ -30,5 +32,14 @@ class BookController extends Controller
         } else {
             return view('book.error', ['name' => $name]);
         }
+    }
+
+    public function show($id)
+    {
+        $book = Book::find($id);
+        $library = Library::find($book->id);
+        $category = Category::find($book->id);
+
+        return view('book.show', ['book' => $book, 'library' => $library, 'category' => $category]);
     }
 }
