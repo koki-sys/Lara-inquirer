@@ -22,6 +22,7 @@ use Illuminate\Support\Facades\Auth;
 Auth::routes();
 Route::get('/', [BookController::class, 'index'])->name('book.index');
 Route::post('/search', [BookController::class, 'search'])->name('book.search');
+Route::get('/book/{id}', [BookController::class, 'show'])->name('book.show');
 Route::get('rental/book', [RentalController::class, 'book'])->name('rental.book');
 Route::get('rental/detail', [RentalController::class, 'detail'])->name('rental.detail');
 Route::resource('category', CategoryController::class);

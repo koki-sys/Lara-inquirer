@@ -20,11 +20,7 @@
                         <input type="hidden" name="cartid" value="{{ $book->id }}">
                         <input type="submit" class="btn btn-info mr-3 ml-3" value="ブックカートへ"></a>
                     </form>
-                    <form action="../home/show.php" method="post">
-                        @csrf
-                        <input type="hidden" name="showid" value="{{ $book->id }}">
-                        <input type="submit" class="text-primary btn-white btn" value="書籍詳細"></a>
-                    </form>
+                    <a href="/book/{{ $book->id }}" class="text-primary btn-white btn">書籍詳細</a>
                 </div>
             </div>
         </div>
