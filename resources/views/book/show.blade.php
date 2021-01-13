@@ -7,7 +7,8 @@
             <h4 class="float-left">{{ $book->name }}</h4>
         </div>
         <div class="col-lg-8">
-            <form action="../bookcart/add.php" method="post">
+            <form action="{{ route('bookcart.store') }}" method="post">
+                @csrf
                 <input type="hidden" name="cartid" value="{{ $book->id }}">
                 <input type="submit" class="btn btn-info mr-3 ml-3" value="ブックカートへ"></a>
             </form>
