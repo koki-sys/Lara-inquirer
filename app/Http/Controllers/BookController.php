@@ -10,10 +10,10 @@ use Illuminate\Http\Request;
 
 class BookController extends Controller
 {
-    public function index(Request $request)
+    public function index()
     {
         $books = Book::all();
-        return view('book.index', ['books' => $books]);
+        return json_encode($books);
     }
 
     public function search(Request $request)
@@ -28,9 +28,9 @@ class BookController extends Controller
             $cnt = $row->area_count;
         }
         if ($name != null && $name != '' && $cnt != 0) {
-            return view('book.search', ['search' => $search, 'name' => $name]);
+            return json_encode($search, $name);
         } else {
-            return view('book.error', ['name' => $name]);
+            return json_encode($name);
         }
     }
 
@@ -40,6 +40,6 @@ class BookController extends Controller
         $library = Library::find($book->id);
         $category = Category::find($book->id);
 
-        return view('book.show', ['book' => $book, 'library' => $library, 'category' => $category]);
+        return json_encode($book, $library, $category);
     }
 }
