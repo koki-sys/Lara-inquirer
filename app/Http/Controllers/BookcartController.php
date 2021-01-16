@@ -31,26 +31,7 @@ class BookcartController extends Controller
             $img_arry[] = $current_cart->img;
         }
 
-        return view(
-            'bookcart.index',
-            [
-                'img_arry' => $img_arry,
-                'nowurl' => $nowurl,
-                'indexurl' => $indexurl,
-                'cartcnt' => $cartcnt,
-                'rentalcnt' => $rentalcnt
-            ]
-        );
-    }
-
-    /**
-     * Show the form for creating a new resource.
-     *
-     * @return \Illuminate\Http\Response
-     */
-    public function create()
-    {
-        //
+        return json_encode($img_arry, $nowurl, $indexurl, $cartcnt, $rentalcnt);
     }
 
     /**
@@ -98,64 +79,11 @@ class BookcartController extends Controller
                 $img_arry[] = $current_cart->img;
             }
 
-            return view(
-                'bookcart.store',
-                [
-                    'img_arry' => $img_arry,
-                    'addurl' => $addurl,
-                    'nowurl' => $nowurl,
-                    'rentalcnt' => $rentalcnt,
-                    'cartcnt' => $cartcnt
-                ]
-            );
+            return json_encode($img_arry, $addurl, $nowurl, $rentalcnt, $cartcnt);
         } else {
             // 非ログイン時の処理
             return redirect('/login');
         }
     }
 
-    /**
-     * Display the specified resource.
-     *
-     * @param  int  $id
-     * @return \Illuminate\Http\Response
-     */
-    public function show($id)
-    {
-        //
-    }
-
-    /**
-     * Show the form for editing the specified resource.
-     *
-     * @param  int  $id
-     * @return \Illuminate\Http\Response
-     */
-    public function edit($id)
-    {
-        //
-    }
-
-    /**
-     * Update the specified resource in storage.
-     *
-     * @param  \Illuminate\Http\Request  $request
-     * @param  int  $id
-     * @return \Illuminate\Http\Response
-     */
-    public function update(Request $request, $id)
-    {
-        //
-    }
-
-    /**
-     * Remove the specified resource from storage.
-     *
-     * @param  int  $id
-     * @return \Illuminate\Http\Response
-     */
-    public function destroy($id)
-    {
-        //
-    }
 }

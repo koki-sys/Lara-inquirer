@@ -17,7 +17,7 @@ class RentalController extends Controller
      */
     public function index()
     {
-        return view('rental.index');
+        // myライブラリのメニューに遷移
     }
 
     /**
@@ -64,7 +64,7 @@ class RentalController extends Controller
                 $library = '';
                 $library = Library::find($query->receipt_library_id);
 
-                return view('rental.create', compact('query', 'library', 'cnt'));
+                return json_encode($query, $library, $cnt);
             } else {
                 return redirect('/')->with('message', 'ブックカートが空です。書籍を予約する際は、ブックカートに入れて予約してください。');
             }
@@ -83,7 +83,7 @@ class RentalController extends Controller
                 ->where('rental_flg', 1)
                 ->get();
 
-            return view('rental.mybook', compact('mybook'));
+            return json_encode($mybook);
         } else {
             return redirect('/login');
         }
@@ -97,7 +97,7 @@ class RentalController extends Controller
                 ->where('rental_flg', 1)
                 ->get();
 
-            return view('rental.mydetail', compact('detail'));
+            return json_encode($detail);
         } else {
             return redirect('/login');
         }
@@ -117,7 +117,7 @@ class RentalController extends Controller
 
             $library = Library::find($book->receipt_library_id);
 
-            return view('rental.show', compact('book', 'library'));
+            return json_encode($book, $library);
         } else {
             return redirect('/login');
         }
