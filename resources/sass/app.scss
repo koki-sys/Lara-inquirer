@@ -1,8 +1,16 @@
 // Fonts
-@import url('https://fonts.googleapis.com/css?family=Nunito');
-
-// Variables
-@import 'variables';
+@import url('https://fonts.googleapis.com/css2?family=Kosugi+Maru&display=swap');
 
 // Bootstrap
 @import '~bootstrap/scss/bootstrap';
+
+@import 'home.scss';
+@import 'nav.scss';
+
+$main_background: #fbfbfb;
+
+body {
+    font-family: 'Kosugi Maru', sans-serif;
+    background-color: $main_background;
+}
+
