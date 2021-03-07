@@ -3,16 +3,15 @@ import ReactDOM from 'react-dom';
 import { BrowserRouter, Route } from 'react-router-dom';
 
 // componentsディレクトリにあるコンポーネント
-import { Nav } from '../nav/Nav';
+import { BasicNav } from '../nav/BasicNav';
 import { Home } from './Home';
 
 export function InquirerApp() {
     return (
         <div>
-
             <BrowserRouter>
+                <BasicNav />
                 <Route exact path="/" component={Home} />
-                <Nav />
             </BrowserRouter>
         </div>
     );
