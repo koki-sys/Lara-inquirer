@@ -6,9 +6,6 @@ import { Navbar, Nav, Form, FormControl, Button } from 'react-bootstrap';
 // アプリケーションのコンポーネント
 import { IsLoginNav } from './IsLoginNav';
 
-// 画像など
-import InQuirer from '../../img/InQuirer.svg';
-
 
 export class BasicNav extends Component {
     render() {
@@ -17,16 +14,16 @@ export class BasicNav extends Component {
             <>
                 <Navbar bg="light" expand="lg" className="mt-3 mr-5 ml-5 navigation">
                     <Link to="/">
-                        <img src={InQuirer} alt="InQuirer" />
+                        <img src="img/InQuirer.svg" alt="InQuirer" />
                     </Link>
                     <Navbar.Collapse id="navbarSupportedContent">
                         <ul className="navbar-nav mr-auto"></ul>
                         <ul className="navbar-nav">
-                            <li className="nav-item mr-1">
-                                <Nav.Link href="{{ route('book.index') }}">書籍一覧<span className="sr-only">(current)</span></Nav.Link>
+                            <li className="nav-item mr-3 mt-2">
+                                <Link to="/" className="text-secondary">書籍一覧</Link>
                             </li>
-                            <li className="nav-item mr-1">
-                                <Nav.Link href="{{ route('category.index') }}">カテゴリ</Nav.Link>
+                            <li className="nav-item mr-3 mt-2">
+                                <Link to="#" className="text-secondary">カテゴリ</Link>
                             </li>
                             <li>
                                 <Form inline action="{{ route('book.search') }}" method="POST" className="my-2 my-lg-0">
