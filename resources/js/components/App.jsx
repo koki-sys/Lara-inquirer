@@ -2,9 +2,12 @@ import React from 'react';
 import ReactDOM from 'react-dom';
 import { BrowserRouter, Route } from 'react-router-dom';
 
-// componentsディレクトリにあるコンポーネント
+// アプリケーションのコンポーネント
 import { BasicNav } from '../nav/BasicNav';
+import { LoginPage } from '../auth/LoginPage';
+import { RegisterPage } from '../auth/RegisterPage';
 import { Home } from './Home';
+
 
 export function InquirerApp() {
     return (
@@ -12,6 +15,8 @@ export function InquirerApp() {
             <BrowserRouter>
                 <BasicNav />
                 <Route exact path="/" component={Home} />
+                <Route path="/login" component={LoginPage} />
+                <Route path="/register" component={RegisterPage} />
             </BrowserRouter>
         </div>
     );
