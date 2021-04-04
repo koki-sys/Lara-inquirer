@@ -1,12 +1,7 @@
 <?php
 
 use Illuminate\Support\Facades\Route;
-use App\Http\Controllers\BookController;
-use App\Http\Controllers\CategoryController;
-use App\Http\Controllers\AreaController;
-use App\Http\Controllers\BookcartController;
-use App\Http\Controllers\RentalController;
-use Illuminate\Support\Facades\Auth;
+
 
 /*
 |--------------------------------------------------------------------------
@@ -19,3 +14,6 @@ use Illuminate\Support\Facades\Auth;
 |
 */
 
+Route::get('/{any}', function(){
+    return view('app');
+})->where('any','.*');
