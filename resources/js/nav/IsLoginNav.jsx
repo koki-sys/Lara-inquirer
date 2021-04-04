@@ -1,5 +1,4 @@
 import { Link } from 'react-router-dom';
-import { useState } from 'react';
 
 const BeforeLoginNav = () => {
     return (
@@ -24,31 +23,41 @@ const BeforeLoginNav = () => {
 }
 
 const AfterLoginNav = () => {
+
+    const logout = () => {
+        axios
+            .get("/api/logout")
+            .then(res => {
+                setUser(null);
+            })
+            .catch(err => {
+                console.log(err);
+            });
+    };
+
     return (
-        <nav class="navbar navbar-expand-lg mr-5 ml-5" style="background-color: #fbfbfb;">
-            <div class="collapse navbar-collapse">
-                <ul class="navbar-nav mr-auto"></ul>
-                <ul class="navbar-nav mr-2 w-25">
-                    <li class="nav-item w-25"></li>
-                    <li class="nav-item mr-2" style="width: 40%">
-                        <form action="{{ route('logout') }}" method="POST">
-                            <button type="submit" class="nav-link btn btn-outline-danger text-danger shadow-sm">ログアウト</button>
-                        </form>
+        <nav className="navbar navbar-expand-lg mr-5 ml-5" style={{ backgroundColor: "#fbfbfb" }}>
+            <div className="collapse navbar-collapse">
+                <ul className="navbar-nav mr-auto"></ul>
+                <ul className="navbar-nav mr-2 w-25">
+                    <li className="nav-item w-25"></li>
+                    <li className="nav-item mr-2" width="40%">
+                        <button onClick={logout} className="nav-link btn btn-outline-danger text-danger shadow-sm">ログアウト</button>
                     </li>
-                    <li class="nav-item w-50">
-                        <a class="nav-link btn shadow-sm" style="background-color: #E6E6E6;" href="{{ route('rental.index') }}" >
+                    <li className="nav-item w-50">
+                        <a className="nav-link btn shadow-sm" style={{ backgroundColor: "#E6E6E6" }} href="{{ route('rental.index') }}" >
                             <img src="{{ asset('storage/img/mylibrary.svg') }}" alt="Myライブラリ" />
                         </a>
                     </li>
                 </ul>
-                <ul class="navbar-nav w-25">
-                    <li class="nav-item mr-2 w-50">
-                        <a class="nav-link btn btn-info shadow-sm" href="{{ route('bookcart.index') }}">
+                <ul className="navbar-nav w-25">
+                    <li className="nav-item mr-2 w-50">
+                        <a className="nav-link btn btn-info shadow-sm" href="{{ route('bookcart.index') }}">
                             <img src="{{ asset('storage/img/bookcart.svg') }}" alt="ブックカート" />
                         </a>
                     </li>
-                    <li class="nav-item w-50">
-                        <a class="nav-link btn btn-primary shadow-sm" href="{{ route('rental.create') }}">予約確定</a>
+                    <li className="nav-item w-50">
+                        <a className="nav-link btn btn-primary shadow-sm" href="{{ route('rental.create') }}">予約確定</a>
                     </li>
                 </ul>
             </div>
@@ -56,12 +65,12 @@ const AfterLoginNav = () => {
     )
 }
 
-const IsLoginNav = (props) => {
-    const [user, setUser] = useState([]);
-
-    return (
-        <BeforeLoginNav />
-    )
+const IsLoginNav = () => {
+    if (sessionStorage) {
+        return AfterLoginNav()
+    } else {
+        return BeforeLoginNav()
+    }
 }
 
 export { IsLoginNav };

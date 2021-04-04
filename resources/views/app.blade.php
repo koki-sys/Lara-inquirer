@@ -1,5 +1,6 @@
 <!doctype html>
 <html lang="ja">
+
 <head>
     <!-- Required meta tags -->
     <meta charset="utf-8">
@@ -16,7 +17,9 @@
 
     </div>
 
-<!-- avaScript -->
-<script src="{{ asset('js/app.js')}}"></script>
+    <!-- avaScript -->
+    <script src="{{ asset('js/app.js')}}"></script>
 </body>
+
 </html>
+

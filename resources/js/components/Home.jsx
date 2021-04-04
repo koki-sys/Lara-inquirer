@@ -11,6 +11,10 @@ const Home = () => {
                 .get('/api')
                 .then(res => {
                     console.log("書籍データ取得成功");
+
+                    // cookie取得
+                    console.log(document.cookie);
+                    
                     setBooks(res.data);
                 })
                 .catch(() => {

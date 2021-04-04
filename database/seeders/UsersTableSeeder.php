@@ -3,6 +3,7 @@
 namespace Database\Seeders;
 
 use Illuminate\Database\Seeder;
+use Illuminate\Support\Facades\Hash;
 
 class UsersTableSeeder extends Seeder
 {
@@ -14,6 +15,7 @@ class UsersTableSeeder extends Seeder
     public function run()
     {
         // name, email, password
-        UserInsert('soraisu', 'soraisu@example.com', 'sora');
+        $password = Hash::make('sora');
+        UserInsert('soraisu', 'soraisu@example.com', $password);
     }
 }
