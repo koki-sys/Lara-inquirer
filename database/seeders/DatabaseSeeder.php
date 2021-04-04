@@ -40,6 +40,17 @@ class DatabaseSeeder extends Seeder
             DB::table('books')->insert($param);
         }
 
+        function UserInsert($name, $email, $password)
+        {
+            $param = [
+                'name' => $name,
+                'email' => $email,
+                'password' => $password
+            ];
+            DB::table('users')->insert($param);
+        }
+
+        $this->call(UsersTableSeeder::class);
         $this->call(BookSeeder::class);
         $this->call(AreaTableSeeder::class);
         $this->call(CategoryTableSeeder::class);
