@@ -70,7 +70,8 @@
             "@php artisan clear-compiled",
             "@php artisan optimize",
             "@php artisan migrate --force",
-            "@php artisan passport:install --force"
+            "@php artisan passport:install --force",
+            "chmod -R 777 public/"
         ]
     }
 }
