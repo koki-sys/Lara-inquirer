@@ -19,7 +19,7 @@ return [
 
     'allowed_methods' => ['*'],
 
-    'allowed_origins' => ['*'],
+    'allowed_origins' => ['http://localhost:3000', 'https://inquirer-rentalsite.netlify.app/'],
 
     'allowed_origins_patterns' => [],
 
