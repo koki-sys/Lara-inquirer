@@ -13,14 +13,25 @@ class CategoryController extends Controller
     {
         $categories = Category::all();
         $areas = Area::all();
-        $data = ['categories' => $categories, 'areas' => $areas];
-        return json_encode($data);
+
+        $data = [
+            'categories' => $categories,
+            'areas' => $areas
+        ];
+
+        return $data;
     }
 
     public function show($id)
     {
         $areabook = Book::where('category_id', $id)->get();
         $category = Category::find($id);
-        return json_encode($areabook, $category);
+
+        $jsonArray = [
+            'areabook' => $areabook,
+            'category' => $category
+        ];
+
+        return $jsonArray;
     }
 }

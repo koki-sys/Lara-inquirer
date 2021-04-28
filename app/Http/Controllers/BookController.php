@@ -24,11 +24,18 @@ class BookController extends Controller
                 $q->where('name', 'like', "%$name%");
             })->withCount('area')->get();
         $cnt = 0;
+
         foreach ($search as $row) {
             $cnt = $row->area_count;
         }
         if ($name != null && $name != '' && $cnt != 0) {
-            return json_encode($search, $name);
+
+            $jsonArray = [
+                $search,
+                $name
+            ];
+
+            return $jsonArray;
         } else {
             return json_encode($name);
         }
@@ -37,9 +44,15 @@ class BookController extends Controller
     public function show($id)
     {
         $book = Book::find($id);
-        $library = Library::find($book->id);
-        $category = Category::find($book->id);
+        $library = Library::find($book->library_id);
+        $category = Category::find($book->category_id);
 
-        return json_encode($book, $library, $category);
+        $jsonArray = [
+            'book' => $book,
+            'library' => $library,
+            'category' => $category
+        ];
+
+        return $jsonArray;
     }
 }

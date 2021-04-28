@@ -31,7 +31,15 @@ class BookcartController extends Controller
             $img_arry[] = $current_cart->img;
         }
 
-        return json_encode($img_arry, $nowurl, $indexurl, $cartcnt, $rentalcnt);
+        $jsonArray = [
+            'img' => $img_arry,
+            'nowurl' => $nowurl,
+            'indexurl' => $indexurl,
+            'cartcnt' => $cartcnt,
+            'rentalcnt' => $rentalcnt
+        ]; 
+
+        return $jsonArray;
     }
 
     /**
@@ -79,7 +87,15 @@ class BookcartController extends Controller
                 $img_arry[] = $current_cart->img;
             }
 
-            return json_encode($img_arry, $addurl, $nowurl, $rentalcnt, $cartcnt);
+            $jsonArray = [
+                'img' => $img_arry,
+                'nowurl' => $nowurl,
+                'addurl' => $addurl,
+                'cartcnt' => $cartcnt,
+                'rentalcnt' => $rentalcnt
+            ]; 
+
+            return $jsonArray;
         } else {
             // 非ログイン時の処理
             return redirect('/login');
