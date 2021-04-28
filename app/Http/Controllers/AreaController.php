@@ -17,8 +17,14 @@ class AreaController extends Controller
      */
     public function show($id)
     {
-        $areabook = Book::where('area_id', $id)->get();
+        $book = Book::where('area_id', $id)->get();
         $area = Area::find($id);
-        return json_encode($areabook, $area);
+
+        $jsonArray = [
+            'book' => $book,
+            'area' => $area
+        ];
+        
+        return $jsonArray;
     }
 }

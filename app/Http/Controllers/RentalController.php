@@ -11,16 +11,6 @@ use Illuminate\Support\Facades\DB;
 class RentalController extends Controller
 {
     /**
-     * Display a listing of the resource.
-     *
-     * @return \Illuminate\Http\Response
-     */
-    public function index()
-    {
-        // myライブラリのメニューに遷移
-    }
-
-    /**
      * Show the form for creating a new resource.
      *
      * @return \Illuminate\Http\Response
@@ -64,7 +54,15 @@ class RentalController extends Controller
                 $library = '';
                 $library = Library::find($query->receipt_library_id);
 
-                return json_encode($query, $library, $cnt);
+
+                $jsonArray = [
+                    'rental' => $query,
+                    'library' => $library,
+                    'cnt' => $cnt
+                ];
+
+                return $jsonArray;
+
             } else {
                 return redirect('/')->with('message', 'ブックカートが空です。書籍を予約する際は、ブックカートに入れて予約してください。');
             }
@@ -117,7 +115,12 @@ class RentalController extends Controller
 
             $library = Library::find($book->receipt_library_id);
 
-            return json_encode($book, $library);
+            $jsonArray = [
+                'book' => $book,
+                'library' => $library
+            ];
+
+            return $jsonArray;
         } else {
             return redirect('/login');
         }
